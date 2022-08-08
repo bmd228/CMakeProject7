@@ -38,7 +38,7 @@ int main()
 		ss.write(converted,strlen(converted));
 		ss.close();
 	}	
-	cout << "GOGA";
+	cout << "BOBA";
 	system("pause");
 	return 0;
 }
