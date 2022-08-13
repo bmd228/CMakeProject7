@@ -23,7 +23,7 @@ pipeline {
             }
             steps {     
 
-                cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D://vcpkg//scripts//buildsystems//vcpkg.cmake', installation: '12'
+                cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '12'
                 cmakeBuild buildType: 'Release', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
 
             }
