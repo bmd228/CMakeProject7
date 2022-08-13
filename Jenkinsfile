@@ -28,8 +28,7 @@ pipeline {
             		}
 			steps
 			{
-cmake arguments: '-DCMAKE_BUILD_TYPE:STRING="Debug" -DCMAKE_TOOLCHAIN_FILE="D:/vcpkg/scripts/buildsystems/vcpkg.cmake" ', installation: '12'
-cmake arguments: '--build build ', installation: '12'
+cmakeBuild buildDir: 'build', buildType: 'RelWithDebInfo', cleanBuild: true, cmakeArgs: '-DCMAKE_TOOLCHAIN_FILE="D:/vcpkg/scripts/buildsystems/vcpkg.cmake"', generator: 'Ninja', installation: '12'
 			}
 		}
 	
