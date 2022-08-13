@@ -13,44 +13,25 @@ pipeline {
 	}
 
 	stages {
+		
         stage('Build') {
+		steps {
+                bat '''
+		set path=%path:\"=%
+                    call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat" 
+                '''
+            }
             steps {     
-      bat """set path=%path:\"=%
-      call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat" 
-       ..."""
-                cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=~/Projects/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: 'InSearchPath'
-                cmakeBuild buildType: 'Release', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
+
+                cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D://vcpkg//scripts//buildsystems//vcpkg.cmake', installation: '12'
+                cmakeBuild buildType: 'Release', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
 
             }
         }
 
-        stage('Test') {
-            when {
-                environment name: 'RUN_TESTS', value: 'true'
-            }
-            steps {
-                ctest 'InSearchPath'
-            }
-        }
+      
+      
 
-        stage('Analyse') {
-            when {
-                environment name: 'RUN_ANALYSIS', value: 'true'
-            }
-            steps {
-                sh label: '', returnStatus: true, script: 'cppcheck . --xml --language=c++ --suppressions-list=suppressions.txt 2> cppcheck-result.xml'
-                publishCppcheck allowNoReport: true, ignoreBlankFiles: true, pattern: '**/cppcheck-result.xml'
-            }
-        }
-
-        stage('Deploy') {
-            when {
-                environment name: 'DEPLOY', value: 'true'
-            }
-            steps {
-                sh label: '', returnStatus: true, script: '''cp jenkinsexample ~
-                cp test/testPro ~'''
-            }
         }
 	}
 }
