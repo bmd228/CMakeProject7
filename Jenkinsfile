@@ -1,5 +1,6 @@
 pipeline {
-	agent any			
+	agent any
+	stages {
         stage('Build') 
 	{
 		steps 
@@ -15,5 +16,6 @@ pipeline {
                 cmakeBuild buildType: 'Release', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
             	}
         }
+	}
 	
 }
