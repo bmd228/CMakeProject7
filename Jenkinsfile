@@ -46,7 +46,7 @@ pipeline {
 			set path=%path:\"=%
 	
 			CD build
-  			
+  			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat" 
 			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake"  --build ./
 
                 '''	
