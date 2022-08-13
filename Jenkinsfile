@@ -29,7 +29,8 @@ pipeline {
 			steps
 			{
 			cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '13'
-                	cmakeBuild  sourceDir: '$WORKSPACE',buildDir: 'build', buildType: 'RelWithDebInfo', cleanBuild: true, installation: '13', steps: [[withCmake: true]]		
+                	cmakeBuild   buildType: 'RelWithDebInfo', cleanBuild: true, installation: '13', steps: [[withCmake: true]]
+			cmake arguments: '--install D:\\GID', installation: '13'
 			}
 		}
 	
