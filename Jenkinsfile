@@ -13,7 +13,7 @@ pipeline {
 	}
 	stages {
 
-		stage('Build with simvol')
+		stage('Make CMake')
 		{
 			when {
                 	environment name: 'SIMV', value: 'true'
@@ -28,13 +28,31 @@ pipeline {
 			CD build
 			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat" 
   			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake" -G "Ninja" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake ../
+		
+
+                '''	
+			}
+			}
+		}
+			stage('Build with simvol')
+		{
+			when {
+                	environment name: 'SIMV', value: 'true'
+            		}
+			steps
+			{
+				 script {
+			bat encoding: 'Windows-1251', script: ''' 		
+			set path=%path:\"=%
+	
+			CD build
+  			
 			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake"  --build ./
 
                 '''	
 			}
 			}
 		}
-	
 		stage('Build without simvol')
 		{
 			when {
