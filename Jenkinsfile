@@ -10,14 +10,7 @@ pipeline {
 
 	}
 	stages {
-        stage('Run environment VS') 
-	{
-		steps 
-		{
-              	
-            	}
-           
-        }
+
 		stage('Build with simvol')
 		{
 			when {
