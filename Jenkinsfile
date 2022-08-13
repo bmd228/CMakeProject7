@@ -32,7 +32,7 @@ pipeline {
                 	cmakeBuild buildType: 'RelWithDebInfo', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
 			}
 		}
-	}
+	
 		stage('Build without simvol')
 		{
 			when {
