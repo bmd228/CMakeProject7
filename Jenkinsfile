@@ -5,7 +5,7 @@ pipeline {
 	}
 
 	parameters {
-		string(name: 'Path_cmake_VS', defaultValue: 'C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO/2019/ENTERPRISE/COMMON7/IDE/COMMONEXTENSIONS/MICROSOFT/CMAKE/CMake/bin/cmake.exe')
+		
 		booleanParam name: 'SIMV', defaultValue: true, description: 'Run build with simvol?'
 		booleanParam name: 'NO_SIMV', defaultValue: true, description: 'Run build without simvol?'
 		
@@ -21,11 +21,12 @@ pipeline {
 			steps
 			{
 				 script {
-					 bat "set cm=\"${params.Path_cmake_VS}\" call \"C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat\" call %cm% -G "Ninja" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake %cd%"
-
-  			
-					
-					
+			bat ''' 		
+			set path=%path:\"=%
+			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat" 
+  			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake" -G "Ninja" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake %cd%
+			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake --build  -S ./ -B build
+                '''	
 			}
 			}
 		}
