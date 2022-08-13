@@ -28,9 +28,9 @@ pipeline {
             		}
 			steps
 			{
-			buildDir : 'RelWithDebInfo' 
+			
 			cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '12'
-                	cmakeBuild buildType: 'RelWithDebInfo', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
+                	cmakeBuild buildDir: 'RelWithDebInfo', buildType: 'RelWithDebInfo', cleanBuild: true, installation: '12', steps: [[withCmake: true]]		
 			}
 		}
 	
@@ -41,9 +41,9 @@ pipeline {
             		}
 			steps
 			{
-			buildDir : 'Debug' 	
+			buildDir : 'Release' 	
 			cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '12'
-                	cmakeBuild  buildType: 'Debug', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
+                	cmakeBuild  buildDir: 'Release', buildType: 'Release', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
 			}
 		}
 	}
