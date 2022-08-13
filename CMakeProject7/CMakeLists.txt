@@ -19,7 +19,13 @@ target_link_libraries(CMakeProject7 PRIVATE  Iconv::Iconv)
 #target_link_libraries(CMakeProject7 Qt5:QtCore)
 #target_link_libraries(CMakeProject7 Qt5:QtCore) # )
 
-
+install(TARGETS CMakeProject7 
+        CONFIGURATIONS Release
+        FRAMEWORK DESTINATION "D:\\GID"
+        RESOURCE DESTINATION "D:\\GID"
+        ARCHIVE DESTINATION "D:\\GID"
+        RUNTIME DESTINATION "D:\\GID"
+        LIBRARY DESTINATION "D:\\GID")
 
 
 
