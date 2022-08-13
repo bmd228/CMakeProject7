@@ -28,7 +28,7 @@ pipeline {
 			
                 '''	
 					
-					 bat "call '${params.Path_cmake_VS}' --build ./"
+					 bat 'call "${params.Path_cmake_VS}" --build ./'
 			}
 			}
 		}
