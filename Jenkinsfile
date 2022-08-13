@@ -40,8 +40,7 @@ pipeline {
                 	environment name: 'NO_SIMV', value: 'true'
             		}
 			steps
-			{
-			buildDir : 'Release' 	
+			{	
 			cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '12'
                 	cmakeBuild  buildDir: 'Release', buildType: 'Release', cleanBuild: true, installation: '12', steps: [[withCmake: true]]
 			}
