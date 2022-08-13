@@ -29,7 +29,7 @@ pipeline {
 			steps
 			{
 			cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '13'
-                	cmakeBuild  buildDir: 'build', buildType: 'RelWithDebInfo', cleanBuild: true, installation: '13', steps: [[withCmake: true]]		
+                	cmakeBuild  sourceDir: '$WORKSPACE',buildDir: 'build', buildType: 'RelWithDebInfo', cleanBuild: true, installation: '13', steps: [[withCmake: true]]		
 			}
 		}
 	
