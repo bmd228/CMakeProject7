@@ -28,7 +28,7 @@ pipeline {
             		}
 			steps
 			{
-cmake arguments: '-G "Ninja"  -DCMAKE_BUILD_TYPE:STRING="Debug" -DCMAKE_TOOLCHAIN_FILE="D:/vcpkg/scripts/buildsystems/vcpkg.cmake"  $WORKSPACE', installation: '12'
+cmake arguments: -DCMAKE_BUILD_TYPE:STRING="Debug" -DCMAKE_TOOLCHAIN_FILE="D:/vcpkg/scripts/buildsystems/vcpkg.cmake" ', installation: '12'
 			}
 		}
 	
