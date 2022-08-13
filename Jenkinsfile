@@ -23,8 +23,9 @@ pipeline {
 				 script {
 			bat encoding: 'Windows-1251', script: ''' 		
 			set path=%path:\"=%
-			mkdir build
-			cd build
+			RMDIR build /s /q
+			MKDIR build
+			CD build
 			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat" 
   			call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake" -G "Ninja" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake ../
 			cd ..
