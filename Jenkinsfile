@@ -30,7 +30,7 @@ pipeline {
 			{
 			cmake arguments: '-DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: '13'
                 	cmakeBuild   buildType: 'RelWithDebInfo', cleanBuild: true, installation: '13', steps: [[withCmake: true]]
-			cmake arguments: '--install D:\\GID', installation: '13'
+			cmake arguments: '--install', installation: '13'
 			}
 		}
 	
